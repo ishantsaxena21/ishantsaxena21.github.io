@@ -20,12 +20,18 @@
       var isTouch = ('ontouchstart' in document.documentElement);
 
       if ( !isTouch ) {
-        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Resposive_WebGL.json");
+        
       }
+
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Resposive_WebGL.json");        
+      
     </script>
   </head>
 
   <body>
+     <div class="info">
+      <p>Unity WebGL Build - Open in Fullscreen for better Exerience. Press F or <a href="#" onclick="unityInstance.SetFullscreen(1)">click here</a> to toggle fullscreen</p>
+    </div>
     <div class="webgl-wrapper">
       <div class="aspect" style="margin-top: calc(100% / 1920 * 1080);"></div>
       <div class="webgl-content">
@@ -33,15 +39,13 @@
       </div>
     </div>
 
-    <div class="info">
-      <p>Unity WebGL Build</p>
-      <p>Press F or <a href="#" onclick="unityInstance.SetFullscreen(1)">click here</a> to toggle fullscreen</p>
-    </div>
+   
 
     <!-- check for F key press to toggle full screen -->
     <script>
       var isFullscreen = false;
-
+      unityInstance.SetFullscreen(1);
+      isFullscreen = !isFullscreen;
       document.addEventListener('keydown', function(event) {
           if (event.which === 70) {
               if (!isFullscreen) {
